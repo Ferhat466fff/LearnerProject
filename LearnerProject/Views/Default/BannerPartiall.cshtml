@@ -1,0 +1,37 @@
+﻿@model List<LearnerProject.Models.Entities.Banner>
+
+<div class="untree_co-hero overlay" style="background-image: url('/Templates/learner-1.0.0/images/hero-img-1-min.jpg');">
+
+
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-12">
+
+                    <div class="row justify-content-center ">
+
+
+
+                        <div class="col-lg-6 text-center ">
+                      
+
+                            <h3 style="font-size:32px;" class="mb-4 heading text-white" data-aos="fade-up" data-aos-delay="100">@item.Title</h3>
+                            <p class="mb-0" data-aos="fade-up" data-aos-delay="300"><a href="/AllCourse/Index/" class="btn btn-secondary">Tüm Kurslar</a></p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div> <!-- /.row -->
+        }
+    </div> <!-- /.container -->
+
+
+
+</div> <!-- /.untree_co-hero -->

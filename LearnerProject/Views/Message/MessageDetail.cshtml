@@ -1,0 +1,14 @@
+﻿@model LearnerProject.Models.Entities.message
+@{
+    ViewBag.Title = "MessageDetail";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Mesaj Detayları</h3>
+<form class="table table-bordered">
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.MessageContent,4,1, new { @class = "form-control" })
+</form>
+<a href="/Message/IsNotRead/@Model.MessageId"class="btn btn-outline-dark">Okundu</a>

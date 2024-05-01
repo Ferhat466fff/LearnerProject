@@ -1,0 +1,38 @@
+﻿@model LearnerProject.Models.Entities.About
+@{
+    ViewBag.Title = "AddAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Yeni Hakkımda Ekleme Sayfası</h3>
+
+<form method="post">
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Description, 5, 1, new { @class = "form-control" })
+    <br />
+
+    <label>ResimUrl</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+
+    <label>Öğrencilerimiz</label>
+    @Html.TextBoxFor(x => x.Item1, new { @class = "form-control" })
+    <br />
+
+    <label>Öğretmenlerimiz</label>
+    @Html.TextBoxFor(x => x.Item2, new { @class = "form-control" })
+    <br />
+
+    <label>Okullarımız</label>
+    @Html.TextBoxFor(x => x.Item3, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+
+</form>
+

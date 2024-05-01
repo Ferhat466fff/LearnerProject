@@ -1,0 +1,44 @@
+﻿@model List<LearnerProject.Models.Entities.message>
+
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/AdminLayout/Index.cshtml"; }
+
+<br />
+<h3>Gelen Mesajlar Listesi</h3>
+@{ int count = 0; }
+<br />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Email</th>
+        <th>Mesaj Konusu</th>
+        <th>Mesaj İçeriği</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+<tr>
+    <td>@count</td>
+    <td>@item.NameSurname</td>
+    <td>@item.Email</td>
+    <td>@item.Subject</td>
+    <td>@item.MessageContent.Substring(0,Math.Min(40,item.MessageContent.Length))</td>
+    <td>@(item.IsRead== false ? "Okunmadı" : "Okundu")</td>
+
+    <td>
+        <button class="btn btn-outline-info" onclick="window.location.href='/Message/MessageDetail/@item.MessageId'">Detay</button>
+        <span style="margin-right: 10px;"></span>
+        <a href="/Message/IsNotRead/@item.MessageId" class="btn btn-outline-dark">Okunmadı</a>
+        @*<span style="margin-right: 10px;"></span>
+            <a href="/AdminSendMessage/IsRead/@item.MessageId" class="btn btn-outline-light">Okundu olarak işaretle</a>*@
+        <span style="margin-right: 10px;"></span>
+        <a href="/Message/DeleteSendMessage/@item.MessageId" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</a>
+    </td>
+
+</tr>}
+</table>
+

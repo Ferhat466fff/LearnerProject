@@ -1,0 +1,50 @@
+﻿
+@model  List<LearnerProject.Models.Entities.FAQ>
+
+
+<div class="untree_co-section">
+
+
+    <div class="untree_co-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
+                    <img src="https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image" class="img-fluid">
+                </div>
+                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="line-bottom mb-4">Sık Sorulan Sorular</h3>
+                    @foreach (var item in Model)
+                    {
+                        <div class="custom-accordion" id="accordion_@item.FAQId">
+                            <!-- Her soru için benzersiz bir ID -->
+                            <div class="accordion-item">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_@item.FAQId" aria-expanded="true" aria-controls="collapse_@item.FAQId">@item.Question</button> <!-- Her soru için benzersiz bir data-target değeri -->
+                                </h2>
+
+                                <div id="collapse_@item.FAQId" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_@item.FAQId">
+                                    <div class="accordion-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <a href="#"><img src="@item.ImageUrl" alt="Image" style="height:110px;width:425px;" class="img-fluid"></a>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p style="color:black; font-size:17px;">@item.Answer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- .accordion-item -->
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.untree_co-section -->
+
+</div> <!-- /.untree_co-section -->
+
+
+
+
+

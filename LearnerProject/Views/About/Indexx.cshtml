@@ -1,0 +1,38 @@
+﻿@model List<LearnerProject.Models.Entities.About>
+@{
+    ViewBag.Title = "Indexx";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+    <table class="table table-bordered table-hover">
+
+        <tr>
+            <th>#</th>
+            <td>Ünvan</td>
+            <td>Açıklama</td>
+            <td>ResimUrl</td>
+            <td>Öğrencilerimiz</td>
+            <td>Öğretmenlerimiz</td>
+            <td>Okullarımız</td>
+            <td>İşlemler</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Title</td>
+                <td>@item.Description.Substring(0, Math.Min(40, item.Description.Length))...</td>
+                <td>@item.ImageUrl.Substring(0, Math.Min(40, item.ImageUrl.Length))...</td>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+                <td>@item.Item3</td>
+                <td >
+                    <a href="/About/DeleteAbout/@item.AboutId" class="btn btn-outline-danger"><i class="fa fa-trash"></i>Sil</a>
+                    <a href="/About/UpdateAbout/@item.AboutId" class="btn btn-outline-info"><i class="fa fa-pen"></i>Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/About/AddAbout/" class="btn btn-outline-success">Yeni Hakkımda Ekle</a>

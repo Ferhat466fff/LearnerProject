@@ -1,0 +1,84 @@
+﻿
+@using LearnerProject.Models.Entities
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<div class="untree_co-hero overlay" style="background-image: url('images/img-school-3-min.jpg');">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12">
+                <div class="row justify-content-center ">
+                    <div class="col-lg-6 text-center ">
+                        <h1 class="mb-4 heading text-white" data-aos="fade-up" data-aos-delay="100">Kurslarımız</h1>
+                        <div class="mb-5 text-white desc mx-auto" data-aos="fade-up" data-aos-delay="200">
+                            <p><a href="https://untree.co/" target="_blank" class="link-highlight"></a>Merhaba! Biz, Leaner Course, uzmanlık alanımızda profesyonel kurslar veren bir eğitim kurumuyuz. Sektörde deneyimli eğitmenlerimizle öğrencilerimize en iyi eğitimi sunuyoruz. Hedefimiz, sizin başarınızı desteklemek!.</p>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+</div> <!-- /.untree_co-hero -->
+<div class="untree_co-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+                <h2 class="line-bottom text-center mb-4">Kurslarımız.</h2>
+                <p>Alanında Uzman Eğitmenler Tarafından Hazırlanan Kurslarımıız İnceleyebilirsiniz.</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-4 mb-4 mb-lg-0">
+                    <div class="custom-media">
+                        <a href="#"><img src="@item.ImageUrl" alt="Image" style="width:350px;height:200px;" class="img-fluid"></a>
+                        <div class="custom-media-body">
+                            <div class="d-flex justify-content-between pb-3">
+                                <div class="text-primary"><span class="uil uil-book-open"></span> <span>@ViewBag.ferhat Kurs</span></div>
+                                <div class="review">
+                                    <span class="icon-star"></span> <span>
+                                        @{
+                                            var reviewes = item.Reviewes.Where(x => x.CourseId == item.CourseId);//kurs tablosundaki ıd ile reviews tablosundaki ıd eşitse yani puanlanmışsa getir.
+                                            var averageReviewValue = reviewes.Any() ? reviewes.Average(x => x.ReviewValue).ToString() : "Kurs Değerlendirilmedi";
+                                            //eğerki ortalama boş ise yani puanlanmamışsa Henüz Kurs Değerlendirilmedi yazsın.
+                                            //@averageReviewValue-->if else gibi üstteki sağlanıyorsa onu yapcak alttaide else gibi.
+                                        }
+                                        @averageReviewValue
+                                    </span>
+                                </div>
+                            </div>
+
+                            <h3>@item.CourseName</h3>
+                            <p class="mb-4">@item.Description.Substring(0, Math.Min(102, item.Description.Length))</p>
+                            <div class="border-top d-flex justify-content-between pt-3 mt-3 align-items-center">
+                                <div><span class="price">@item.Price</span></div>
+                                <div><a href="/Default/CourseDetial/@item.CourseId">Kurs Detayı</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions() { LiElementClasses = new List<string> { "btn" } })
+
+
+
+
