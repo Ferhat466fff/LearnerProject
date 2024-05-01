@@ -51,7 +51,7 @@ Asp.Net Core MVC 5.0 kullanılarak geliştirilen bu uygulama, Entity Framework C
 - PartialView Kullanımı
 
 ## Linkedln
-https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
+[https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile](https://www.linkedin.com/in/ferhat-sakar-61002b2a6/)
 
 
 ## Proje Görselleri
